@@ -26,8 +26,8 @@
 </head>
 <body>
     <h1>Datos desde JSON</h1>
+    <?php
     <div class="container">
-        <?php
         <table id="example" class="display" style="width:100%">
             <thead>
                 <tr>
@@ -39,7 +39,13 @@
                 </tr>
             </thead>
             <tbody>
-                
+                <tr>
+                    <th>echo $id['id']</th>
+                    <th>echo $nombre['nombre']</th>
+                    <th>echo $precio['precio']</th>
+                    <th>echo $stock['stock']</th>
+                    <th>echo $categoria['categoria']</th>
+                </tr>
             </tbody>
             
         </table>
