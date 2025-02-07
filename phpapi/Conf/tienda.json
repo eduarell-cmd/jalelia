@@ -1,0 +1,42 @@
+{
+    "productos": [
+      {
+        "id": 1,
+        "nombre": "Laptop Gamer",
+        "precio": 1200.99,
+        "stock": 10,
+        "categoria": "Electrónica"
+      },
+      {
+        "id": 2,
+        "nombre": "Smartphone Pro",
+        "precio": 899.99,
+        "stock": 25,
+        "categoria": "Electrónica"
+      }
+    ],
+    "clientes": [
+      {
+        "id": 1,
+        "nombre": "Juan Pérez",
+        "email": "juan.perez@example.com"
+      },
+      {
+        "id": 2,
+        "nombre": "María López",
+        "email": "maria.lopez@example.com"
+      }
+    ],
+    "ordenes": [
+      {
+        "id": 101,
+        "cliente_id": 1,
+        "productos": [
+          { "producto_id": 1, "cantidad": 1 }
+        ],
+        "total": 1200.99,
+        "fecha": "2024-02-04"
+      }
+    ]
+  }
+  
