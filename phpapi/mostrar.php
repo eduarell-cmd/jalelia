@@ -1,5 +1,9 @@
 <?php
-include 'api.php';
+if (basename($_SERVER['PHP_SELF']) === 'api.php') {
+  header('Content-Type: application/json');
+  echo json_encode($students);
+  exit;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +28,17 @@ include 'api.php';
           </tr>
         </thead>
         <tbody>
+        <?php
+
+          $api_url = 'http://localhost/jalelia/phpapi/api.php'; 
+          $response = file_get_contents($api_url);
+          $students = json_decode($response, true); 
+
+          if (!is_array($students)) {
+              $students = []; 
+          }
+        ?>
+
         <?php foreach ($students as $student): ?>
           <tr>
             <td scope="row"><?php echo $student['name']; ?></td>
@@ -65,7 +80,7 @@ include 'api.php';
                         <p class="h5">Confirma la matricula a dar de baja</p>
 		      </div>
                       <div class="modal-body">
-                        <form action="api.php" method="post">
+                        <form action="eliminar.php" method="post">
 			    <label for="matricula">Matricula:</label>
                             <input type="int" name="matricula" placeholder="ingresa tu matricula">
                             <button class="btn btn-primary" type="submit">ELIMINAR USUARIO</button>
@@ -88,7 +103,7 @@ include 'api.php';
                         
 		      </div>
                       <div class="modal-body">
-                        <form action="api.php" method="post">
+                        <form action="modificar.php" method="post">
         <div class="row g-2">
             <div class="col-sm"> 
                 Matricula:<input name="matricula" style="width: 25vw;" type="int" class="form-control" id="floatingInputGrid" placeholder="Matricula">
@@ -116,7 +131,7 @@ include 'api.php';
                         
 		      </div>
                       <div class="modal-body">
-                        <form class="form-floating" action="api.php" method="post">
+                        <form class="form-floating" action="add.php" method="post">
         <div class="row g-2">
             <div class="col-sm">          
         Name:<input name="name" style="width: 25vw;" type="text" class="form-control" id="floatingInputGrid" placeholder="name">
