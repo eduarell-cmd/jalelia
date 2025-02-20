@@ -1,18 +1,10 @@
 <?php
-// aqui van los headers
-header("Content-Type: applitation/json");
+header("Content-Type: application/json");
 header("Access-Control-Allow-Methods: GET,POST,PUT,DELETE");
 header("Accept-Charset: UTF-8");
 
 #importar el archivo
-include "conn.php";
-
-function getData(){
-    global $data;
-    if (!file_exists($data)){
-        echo "Nope";
-    }
-}
+require 'conn.php';
 #Almacenado de metodos en una variable
 $request = $_SERVER['REQUEST_METHOD'];
 
@@ -20,11 +12,14 @@ switch($request){
     case 'GET':
         $query = "SELECT * FROM students";
         $result = $conn->query($query);
-        $data = [];
-        foreach($result as $student){
-            $data[] = $student;
+        if ($result) {
+            $students = $result->fetchAll(PDO::FETCH_ASSOC); 
+            echo json_encode($students);
+        } else {
+            echo json_encode(["error" => "No se pudieron obtener los estudiantes"]);
         }
-        echo json_encode($data);
+        exit();
+        break;
     case 'POST':
                 #POST
     $name = $_POST['name'];
@@ -51,7 +46,7 @@ switch($request){
         $queryDelete = "DELETE FROM students WHERE matricula = :matricula";
         $res = $conn -> prepare($queryDelete);
         $res-> execute([':matricula' => $matricula]);
-        echo "Estudiante eliminado"
+        echo "Estudiante eliminado";
         break;
     default:
      echo "nada papu";
