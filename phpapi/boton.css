@@ -1,0 +1,12 @@
+.dataTables_wrapper .dataTables_filter {
+    float: right;
+}
+
+.dataTables_wrapper .custom-button-container {
+    float: left;
+    margin-bottom: 10px; /* Espaciado opcional */
+}
+
+.dt-layout-row {
+    position: relative;
+}

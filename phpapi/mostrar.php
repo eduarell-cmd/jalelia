@@ -12,12 +12,24 @@ if (basename($_SERVER['PHP_SELF']) === 'api.php') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">	
     <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css"/>
+    <link rel="stylesheet" href="boton.css">
     <title>Document</title>
 </head>
 <body>
 <h1 class="display-5">Sistema de alumnos</h1>
 <table id="myTable" class="display">
         <thead>
+        <div class="custom-button-container">
+        <div class="top-bar">
+    <div class="custom-button-container">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+            Dar de alta
+        </button>
+    </div>
+    <div class="dataTables_filter"></div> <!-- Aquí DataTables genera la barra de búsqueda -->
+</div>
+
+</div>
           <tr>
             <th scope="col">Name</th>
             <th scope="col">LastName</th>
@@ -68,8 +80,6 @@ if (basename($_SERVER['PHP_SELF']) === 'api.php') {
           <?php endforeach; ?>
         </tbody>
 </table>
-
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">Dar de alta</button>
         <!--MODAAAAAAAAAAAAAAAL-->
         
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
